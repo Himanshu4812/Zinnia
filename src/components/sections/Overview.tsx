@@ -147,7 +147,7 @@ export const Overview = () => {
               className="pt-8 border-t border-primary/10"
             >
               <div className="flex flex-wrap items-start gap-x-12 gap-y-6">
-                {zinnia.highlights.items.map((item, index) => (
+                {projectStats.map((item, index) => (
                   <motion.div
                     key={item.label}
                     variants={fadeUp}

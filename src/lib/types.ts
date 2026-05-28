@@ -7,10 +7,6 @@ export interface AbloomProject {
     subtitle: string;
     paragraphs: string[];
   };
-  highlights: {
-    title: string;
-    items: { label: string; value: string }[];
-  };
   unitInfrastructure: {
     title: string;
     description: string;
@@ -20,6 +16,13 @@ export interface AbloomProject {
     title: string;
     subtitle: string;
     images: GalleryImage[];
+  };
+  location: {
+    title: string;
+    subtitle: string;
+    address: string;
+    description: string;
+    embedUrl: string;
   };
   plans: {
     title: string;

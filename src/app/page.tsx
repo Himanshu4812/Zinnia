@@ -1,9 +1,9 @@
 import { Hero } from "@/src/components/sections/Hero";
 import { Overview } from "@/src/components/sections/Overview";
-import { ProjectInfo } from "@/src/components/sections/Features";
 import { Amenities } from "@/src/components/sections/Amenities";
 import { PlansSection } from "@/src/components/sections/PlansSection";
 import { Gallery } from "@/src/components/sections/Gallery";
+import { Location } from "@/src/components/sections/Location";
 import { GetInTouch } from "@/src/components/sections/GetInTouch";
 
 export default function Home() {
@@ -12,9 +12,9 @@ export default function Home() {
       <Hero />
       <Overview />
       <Amenities />
-      <ProjectInfo />
       <PlansSection />
       <Gallery />
+      <Location />
       <GetInTouch />
     </div>
   );
