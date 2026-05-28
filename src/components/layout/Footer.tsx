@@ -1,0 +1,116 @@
+'use client';
+import { motion } from 'framer-motion';
+
+export function Footer() {
+  const currentYear = new Date().getFullYear();
+  return (
+    <footer className="bg-[#F6F8F4] text-forest py-16 px-6 lg:px-20">
+      <div className="max-w-[1400px] mx-auto">
+
+        {/* Headings Grid - Desktop Only */}
+        <div className="hidden md:grid md:grid-cols-12 gap-8 pb-6 pt-8">
+          <div className="col-span-5">
+            <h4 className="text-forest/40 text-[13px] font-sans tracking-widest uppercase">(Get in touch)</h4>
+          </div>
+          <div className="col-span-3">
+            <h4 className="text-forest/40 text-[13px] font-sans tracking-widest uppercase">(Location)</h4>
+          </div>
+          <div className="col-span-4">
+            <h4 className="text-forest/40 text-[13px] font-sans tracking-widest uppercase">(Contact)</h4>
+          </div>
+        </div>
+
+        {/* Separator Line */}
+        <motion.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          transition={{ duration: 1.2, ease: 'easeOut' }}
+          viewport={{ once: true }}
+          className="w-full h-[1px] bg-forest/10 origin-center hidden md:block"
+        />
+
+        {/* Content Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 pt-8 pb-16">
+
+          {/* Column 1 - Brand */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true, margin: '0px 0px -50px 0px' }}
+            className="flex flex-col md:col-span-5 lg:col-span-5"
+          >
+            <h4 className="text-forest/40 text-[11px] font-sans tracking-widest uppercase mb-2 md:hidden">(Get in touch)</h4>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-forest tracking-wide">HIRANMAYI</h2>
+            <p className="text-forest/50 text-sm font-sans font-light mt-3 leading-relaxed max-w-xs">
+              Zinnia — A life rooted in green luxury.<br />
+              Kachurli, Trimbakeshwar, Maharashtra.
+            </p>
+          </motion.div>
+
+          {/* Column 2 - Location */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.1 }}
+            viewport={{ once: true }}
+            className="flex flex-col md:col-span-3 lg:col-span-3"
+          >
+            <h4 className="text-forest/40 text-[11px] font-sans tracking-widest uppercase mb-2 md:hidden">(Location)</h4>
+            <p className="text-forest/80 text-[13px] md:text-sm font-sans font-light leading-relaxed">
+              Kachurli,<br />
+              Trimbakeshwar, Nashik,<br />
+              Maharashtra, India
+            </p>
+          </motion.div>
+
+          {/* Column 3 - Contact */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
+            viewport={{ once: true }}
+            className="flex flex-col md:col-span-4 lg:col-span-4"
+          >
+            <h4 className="text-forest/40 text-[11px] font-sans tracking-widest uppercase mb-2 md:hidden">(Contact)</h4>
+            <div className="flex flex-col gap-3">
+              <a
+                href="mailto:hiranmayi0422@gmail.com"
+                className="text-forest text-base md:text-lg font-serif italic tracking-wide hover:opacity-70 transition-opacity"
+              >
+                hiranmayi0422@gmail.com
+              </a>
+              <a
+                href="tel:+919766180144"
+                className="text-forest text-base md:text-lg font-serif italic tracking-wide hover:opacity-70 transition-opacity"
+              >
+                +91 976 618 0144
+              </a>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Horizontal Line */}
+        <motion.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          transition={{ duration: 1.2, ease: 'easeOut' }}
+          viewport={{ once: true }}
+          className="w-full h-[1px] bg-forest/10 my-8 origin-center"
+        />
+
+        {/* Bottom Bar */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="flex flex-col md:flex-row justify-between items-center text-xs text-forest/40 font-sans font-light mt-8 tracking-wide"
+        >
+          <p>©{currentYear}. Hiranmayi Real Estate Pvt. Ltd. All rights reserved.</p>
+          <a href="#" className="hover:text-primary transition-colors mt-4 md:mt-0">Manage cookies</a>
+        </motion.div>
+      </div>
+    </footer>
+  );
+}
