@@ -39,3 +39,43 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Recommended additional ignores for Next.js / Node / editors
+# OS files
+Thumbs.db
+ehthumbs.db
+
+# Editor folders
+.vscode/
+.idea/
+
+# Build output
+/dist/
+/build/
+/out/
+/.next/
+
+# Caches
+.cache/
+.next/cache/
+
+# Storybook
+storybook-static/
+
+# Coverage
+/coverage/
+
+# Logs
+*.log
+
+# Lockfile directories used by package managers (optional)
+.pnp/
+
+# Local env files (explicit)
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Misc
+!.env.example
