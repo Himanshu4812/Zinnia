@@ -1,6 +1,64 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'RadioGrotesk';
+  src: url('/fonts/RadioGrotesk-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPPangaia';
+  src: url('/fonts/PPPangaia-Ultralight-BF654c530cd00f1.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPPangaia';
+  src: url('/fonts/PPPangaia-UltralightItalic-BF654c530ca889f.otf') format('opentype');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPPangaia';
+  src: url('/fonts/PPPangaia-Medium-BF654c530cc86d5.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPPangaia';
+  src: url('/fonts/PPPangaia-MediumItalic-BF654c530bedffb.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPPangaia';
+  src: url('/fonts/PPPangaia-Bold-BF654c530cc27f8.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPPangaia';
+  src: url('/fonts/PPPangaia-BoldItalic-BF654c530c8d2fa.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
 @theme inline {
+  --font-radio-grotesk: 'RadioGrotesk', system-ui, sans-serif;
+  --font-pangaia: 'PPPangaia', Georgia, serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -21,10 +79,10 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-radio-grotesk), system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
   --font-serif: Georgia, Cambria, "Times New Roman", Times, serif;
-
+  --font-heading: var(--font-pangaia), Georgia, serif;
   /* Hiranmayi shared brand palette */
   --color-forest: #1B5E20;
   --color-sage: #A5D6A7;
@@ -33,6 +91,8 @@
 }
 
 :root {
+  --font-radio-grotesk: 'RadioGrotesk', system-ui, sans-serif;
+  --font-pangaia: 'PPPangaia', Georgia, serif;
   --background: #FDFBF7;
   --foreground: #020817;
   --card: #ffffff;
@@ -54,7 +114,7 @@
   --ring: #1B5E20;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #020817;
     --foreground: #f8fafc;
@@ -76,7 +136,7 @@
     --input: #1e293b;
     --ring: #4CAF50;
   }
-}
+} */
 
 html {
   scroll-behavior: smooth;
