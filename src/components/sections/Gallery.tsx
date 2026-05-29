@@ -26,9 +26,6 @@ export function Gallery() {
           <p className="text-muted-foreground font-sans text-xs tracking-[0.4em] uppercase mb-2 font-semibold">
             Gallery
           </p>
-          <h2 className="text-3xl md:text-5xl font-serif font-light tracking-wide">
-            ZINNIA
-          </h2>
         </motion.div>
 
         <div className="w-full h-full">
