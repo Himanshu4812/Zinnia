@@ -26,6 +26,21 @@ interface PlanSector {
 
 // ---------- Data ----------
 
+function archPlanUrl(id: string) {
+  return `/images/MasterPlan/ArchitecturalPlan/${id.charAt(0).toUpperCase() + id.slice(1)}.webp`;
+}
+
+function masterImageUrl(id: string) {
+  const map: Record<string, string> = {
+    masterplan: 'MasterPlan.jpg',
+    clubhouse: 'clubhouse.jpg',
+    villas: 'villas.jpg',
+    gardens: 'lake.avif',
+    entrance: 'Entrance.jpg',
+  };
+  return `/images/MasterPlan/Images/${map[id]}`;
+}
+
 const planData: PlanSector[] = [
   {
     id: 'masterplan',
@@ -42,10 +57,8 @@ const planData: PlanSector[] = [
       'Botanical gardens & lake promenade',
       '24/7 gated security with concierge',
     ],
-    imageUrl:
-      'https://hiranmayi.org/wp-content/uploads/2025/07/Zinnia-6.jpg',
-    planUrl:
-      'https://hiranmayi.org/wp-content/uploads/2025/07/Zinnia-map1-1024x618.jpg',
+    imageUrl: masterImageUrl('masterplan'),
+    planUrl: archPlanUrl('masterplan'),
     metrics: [
       { label: 'Total Area', value: '17 Acres', icon: <Ruler className="w-4 h-4" /> },
       { label: 'Green Cover', value: '65%', icon: <Leaf className="w-4 h-4" /> },
@@ -68,10 +81,8 @@ const planData: PlanSector[] = [
       'Premium fitness center',
       'Rooftop terrace with panoramic views',
     ],
-    imageUrl:
-      'https://hiranmayi.org/wp-content/uploads/2025/07/Zinnia-6.jpg',
-    planUrl:
-      'https://hiranmayi.org/wp-content/uploads/2025/07/Zinnia-map1-1024x618.jpg',
+    imageUrl: masterImageUrl('clubhouse'),
+    planUrl: archPlanUrl('clubhouse'),
     metrics: [
       { label: 'Built-up', value: '8,500 sq ft', icon: <Ruler className="w-4 h-4" /> },
       { label: 'Capacity', value: '200+', icon: <Building2 className="w-4 h-4" /> },
@@ -93,10 +104,8 @@ const planData: PlanSector[] = [
       'EV charging pre-wiring',
       'Rainwater harvesting system',
     ],
-    imageUrl:
-      'https://hiranmayi.org/wp-content/uploads/2025/07/Zinnia-4.jpg',
-    planUrl:
-      'https://hiranmayi.org/wp-content/uploads/2025/07/Zinnia-map4-1024x724.jpg',
+    imageUrl: masterImageUrl('villas'),
+    planUrl: archPlanUrl('villas'),
     metrics: [
       { label: 'Plot Size', value: '15,000+ sq ft', icon: <Ruler className="w-4 h-4" /> },
       { label: 'Built-up', value: '3,000+ sq ft', icon: <Building2 className="w-4 h-4" /> },
@@ -118,10 +127,8 @@ const planData: PlanSector[] = [
       'Lakeside promenade & seating',
       'Boating jetty & deck',
     ],
-    imageUrl:
-      'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=900&auto=format&fit=crop&q=80',
-    planUrl:
-      'https://hiranmayi.org/wp-content/uploads/2025/07/Zinnia-map3-1024x725.jpg',
+    imageUrl: masterImageUrl('gardens'),
+    planUrl: archPlanUrl('gardens'),
     metrics: [
       { label: 'Garden Area', value: '3.5 Acres', icon: <TreePine className="w-4 h-4" /> },
       { label: 'Plant Species', value: '50+', icon: <Leaf className="w-4 h-4" /> },
@@ -143,10 +150,8 @@ const planData: PlanSector[] = [
       'Well-lit boulevard',
       'Automated vehicle screening',
     ],
-    imageUrl:
-      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&auto=format&fit=crop&q=80',
-    planUrl:
-      'https://hiranmayi.org/wp-content/uploads/2025/07/Zinnia-map3-1024x725.jpg',
+    imageUrl: masterImageUrl('entrance'),
+    planUrl: archPlanUrl('entrance'),
     metrics: [
       { label: 'Boulevard Width', value: '30 m', icon: <Ruler className="w-4 h-4" /> },
       { label: 'Landscaping', value: 'Heritage Trees', icon: <TreePine className="w-4 h-4" /> },
@@ -416,9 +421,12 @@ export function PlansSection() {
 
         {/* ---- LEFT SHUTTER PANEL (Luxury brochure aesthetic) ---- */}
         <motion.div
-          animate={{ x: shutterX }}
-          transition={{ type: 'spring', stiffness: 120, damping: 22, mass: 1 }}
-          className="absolute top-0 left-0 w-1/2 h-full z-20 hidden md:block"
+          animate={{ x: shutterX, opacity: shuttersOpen ? 0 : 1 }}
+          transition={{
+            x: { type: 'spring', stiffness: 120, damping: 22, mass: 1 },
+            opacity: { duration: prefersReducedMotion ? 0 : 0.35, ease: easeArr },
+          }}
+          className={`absolute top-0 left-0 w-1/2 h-full z-20 hidden md:block ${shuttersOpen && prefersReducedMotion ? 'invisible pointer-events-none' : ''}`}
         >
           <div className="relative w-full h-full bg-[#FAF9F6] overflow-hidden flex flex-col justify-start pt-16 px-14 lg:px-16 xl:px-20">
             {/* Decorative botanical illustration — bottom left */}
@@ -549,9 +557,13 @@ export function PlansSection() {
                 ? '0%'
                 : '100%'
               : '0%',
+            opacity: shuttersOpen ? 0 : 1,
           }}
-          transition={{ type: 'spring', stiffness: 120, damping: 22, mass: 1 }}
-          className="absolute top-0 right-0 w-1/2 h-full z-20 hidden md:block"
+          transition={{
+            x: { type: 'spring', stiffness: 120, damping: 22, mass: 1 },
+            opacity: { duration: prefersReducedMotion ? 0 : 0.35, ease: easeArr },
+          }}
+          className={`absolute top-0 right-0 w-1/2 h-full z-20 hidden md:block ${shuttersOpen && prefersReducedMotion ? 'invisible pointer-events-none' : ''}`}
         >
           <div className="w-full h-full bg-[#FDFBF7] relative overflow-hidden">
             {/* Background geometric pattern */}
@@ -726,6 +738,7 @@ export function PlansSection() {
         {detailSector && (
           <>
             <motion.div
+              key={`backdrop-${detailSector.id}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
