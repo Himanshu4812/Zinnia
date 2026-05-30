@@ -23,8 +23,6 @@ interface CircularGalleryProps extends HTMLAttributes<HTMLDivElement> {
 const CircularGallery = React.forwardRef<HTMLDivElement, CircularGalleryProps>(
   ({ items, className, radius: propRadius, autoRotateSpeed = 0.02, ...props }, ref) => {
     const [rotation, setRotation] = useState(0);
-    const [isScrolling, setIsScrolling] = useState(false);
-    const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
     const animationFrameRef = useRef<number | null>(null);
 
     const isDraggingRef = useRef(false);
@@ -57,43 +55,8 @@ const CircularGallery = React.forwardRef<HTMLDivElement, CircularGalleryProps>(
     }, [propRadius]);
 
     useEffect(() => {
-      const handleScroll = () => {
-        if (isDraggingRef.current) return;
-
-        setIsScrolling(true);
-        if (scrollTimeoutRef.current) {
-          clearTimeout(scrollTimeoutRef.current);
-        }
-
-        const section = document.getElementById('gallery');
-        if (section) {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.offsetHeight;
-          const scrollableHeight = sectionHeight - window.innerHeight;
-          const scrolled = window.scrollY - sectionTop;
-          const sectionProgress = scrollableHeight > 0
-            ? Math.max(0, Math.min(1, scrolled / scrollableHeight))
-            : 0;
-          setRotation(sectionProgress * 360);
-        }
-
-        scrollTimeoutRef.current = setTimeout(() => {
-          setIsScrolling(false);
-        }, 150);
-      };
-
-      window.addEventListener('scroll', handleScroll, { passive: true });
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-        if (scrollTimeoutRef.current) {
-          clearTimeout(scrollTimeoutRef.current);
-        }
-      };
-    }, []);
-
-    useEffect(() => {
       const autoRotate = () => {
-        if (!isScrolling && !isDraggingRef.current) {
+        if (!isDraggingRef.current) {
           setRotation(prev => prev + autoRotateSpeed);
         }
         animationFrameRef.current = requestAnimationFrame(autoRotate);
@@ -106,7 +69,7 @@ const CircularGallery = React.forwardRef<HTMLDivElement, CircularGalleryProps>(
           cancelAnimationFrame(animationFrameRef.current);
         }
       };
-    }, [isScrolling, autoRotateSpeed]);
+    }, [autoRotateSpeed]);
 
     const handlePointerStart = useCallback((clientX: number) => {
       isDraggingRef.current = true;

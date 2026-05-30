@@ -12,10 +12,9 @@ export function Gallery() {
   return (
     <section
       id="gallery"
-      className="relative w-full bg-background text-foreground"
-      style={{ height: '500vh' }}
+      className="relative w-full h-screen bg-background text-foreground overflow-hidden"
     >
-      <div className="w-full h-screen sticky top-0 flex flex-col items-center justify-center overflow-hidden">
+      <div className="w-full h-full flex flex-col items-center justify-center">
         <motion.div
           ref={titleRef}
           initial={{ opacity: 0, y: 20 }}
